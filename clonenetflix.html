@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netflix Clone</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    header {
+      position: relative;
+      background-image: url('https://i.imgur.com/e1hLQ2J.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    header h1, header h2 {
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 48px;
+      color: #e50914;
+    }
+
+    header h2 {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #fff;
+    }
+
+    .carrossel {
+      padding: 20px;
+    }
+
+    .carrossel h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .filmes {
+      display: flex;
+      overflow-x: auto;
+      gap: 12px;
+      padding-bottom: 10px;
+      scroll-behavior: smooth;
+    }
+
+    .filmes::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filme {
+      flex: 0 0 auto;
+      width: 160px;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .filme:hover {
+      transform: scale(1.05);
+    }
+
+    .filme img {
+      width: 100%;
+      display: block;
+    }
+
+    footer {
+      background-color: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 500px) {
+      header h1 {
+        font-size: 36px;
+      }
+
+      .filme {
+        width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Netflix</h1>
+    <h2>Filmes, séries e muito mais. Sem limites.</h2>
+  </header>
+
+  <section class="carrossel">
+    <h3>Filmes Populares</h3>
+    <div class="filmes" id="filmes">
+      <!-- JS carrega os filmes aqui -->
+    </div>
+  </section>
+
+  <footer>
+    <p>Clone da Netflix feito por Weslei Silveira para fins de estudo.</p>
+  </footer>
+
+  <script>
+    const filmes = [
+      'https://image.tmdb.org/t/p/w300/8QVDXDiOGHRcAD4oM6MXjE0osSj.jpg',
+      'https://image.tmdb.org/t/p/w300/ctMserH8g2SeOAnCw5gFjdQF8mo.jpg',
+      'https://image.tmdb.org/t/p/w300/3UqR1g3blC2T3tVJUB3B2yUr0dC.jpg',
+      'https://image.tmdb.org/t/p/w300/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg',
+      'https://image.tmdb.org/t/p/w300/xuCHkAXd324Hk2Wy3j4Hk0XrPZ3.jpg',
+      'https://image.tmdb.org/t/p/w300/8uVKfOJUhmybNsVh089EqLHUYEG.jpg',
+      'https://image.tmdb.org/t/p/w300/yOm993lsJyPmBodlYjgpPwBjXP9.jpg',
+      'https://image.tmdb.org/t/p/w300/e3gVl1gnxEFKLTFjG2vSEF7Pqfp.jpg'
+    ];
+
+    const container = document.getElementById('filmes');
+
+    filmes.forEach(url => {
+      const div = document.createElement('div');
+      div.classList.add('filme');
+      div.innerHTML = `<img src="${url}" alt="Filme">`;
+      container.appendChild(div);
+    });
+  </script>
+
+</body>
+</html>
